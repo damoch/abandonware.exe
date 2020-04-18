@@ -2,6 +2,6 @@
 {
     internal enum BasicConfigEntries
     {
-        supportedOS
+        supportedOS, cdDriveLetter
     }
 }

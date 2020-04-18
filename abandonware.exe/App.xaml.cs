@@ -15,6 +15,7 @@ namespace abandonware.exe
     /// </summary>
     public partial class App : Application
     {
+        private MainWindow _mainWindow;
         private void App_Startup(object sender, StartupEventArgs e)
         {
             VerifyConfigFile();
@@ -29,6 +30,13 @@ namespace abandonware.exe
                 MessageBox.Show($"{GetOSName()} is not supported operating system", "FATAL ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 Current.Shutdown();
             }
+
+            var cdkeyWindow = new CDKeyCheck();
+            cdkeyWindow.FinishAction += () => {
+                _mainWindow = new MainWindow(); 
+                _mainWindow.Show(); 
+            };
+            cdkeyWindow.Show();
 
         }
 
